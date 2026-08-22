@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Heart Disease Prediction</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>❤️ Heart Disease Prediction</h1>
+
+        <p class="subtitle">
+            Machine Learning Based Disease Prediction System
+        </p>
+
+
+        <form action="/predict" method="POST">
+
+
+            <!-- AGE -->
+
+            <div class="form-group">
+
+                <label>Age</label>
+
+                <input
+                    type="number"
+                    name="age"
+                    placeholder="Enter age"
+                    min="1"
+                    max="120"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SEX -->
+
+            <div class="form-group">
+
+                <label>Sex</label>
+
+                <select name="sex" required>
+
+                    <option value="">
+                        Select Sex
+                    </option>
+
+                    <option value="1">
+                        Male
+                    </option>
+
+                    <option value="0">
+                        Female
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- CHEST PAIN -->
+
+            <div class="form-group">
+
+                <label>Chest Pain Type</label>
+
+                <select name="cp" required>
+
+                    <option value="">
+                        Select Chest Pain Type
+                    </option>
+
+                    <option value="0">
+                        Type 0
+                    </option>
+
+                    <option value="1">
+                        Type 1
+                    </option>
+
+                    <option value="2">
+                        Type 2
+                    </option>
+
+                    <option value="3">
+                        Type 3
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BLOOD PRESSURE -->
+
+            <div class="form-group">
+
+                <label>Resting Blood Pressure</label>
+
+                <input
+                    type="number"
+                    name="trestbps"
+                    placeholder="Example: 120"
+                    required
+                >
+
+            </div>
+
+
+            <!-- CHOLESTEROL -->
+
+            <div class="form-group">
+
+                <label>Cholesterol</label>
+
+                <input
+                    type="number"
+                    name="chol"
+                    placeholder="Example: 200"
+                    required
+                >
+
+            </div>
+
+
+            <!-- FASTING BLOOD SUGAR -->
+
+            <div class="form-group">
+
+                <label>Fasting Blood Sugar</label>
+
+                <select name="fbs" required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="0">
+                        No
+                    </option>
+
+                    <option value="1">
+                        Yes
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ECG -->
+
+            <div class="form-group">
+
+                <label>Resting ECG</label>
+
+                <select name="restecg" required>
+
+                    <option value="">
+                        Select ECG
+                    </option>
+
+                    <option value="0">
+                        Normal
+                    </option>
+
+                    <option value="1">
+                        ST-T Wave Abnormality
+                    </option>
+
+                    <option value="2">
+                        Left Ventricular Hypertrophy
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- MAX HEART RATE -->
+
+            <div class="form-group">
+
+                <label>Maximum Heart Rate</label>
+
+                <input
+                    type="number"
+                    name="thalach"
+                    placeholder="Example: 150"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EXERCISE ANGINA -->
+
+            <div class="form-group">
+
+                <label>Exercise Induced Angina</label>
+
+                <select name="exang" required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="0">
+                        No
+                    </option>
+
+                    <option value="1">
+                        Yes
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- OLDPEAK -->
+
+            <div class="form-group">
+
+                <label>Oldpeak</label>
+
+                <input
+                    type="number"
+                    name="oldpeak"
+                    step="0.1"
+                    placeholder="Example: 1.5"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SLOPE -->
+
+            <div class="form-group">
+
+                <label>Slope</label>
+
+                <select name="slope" required>
+
+                    <option value="">
+                        Select Slope
+                    </option>
+
+                    <option value="0">
+                        0
+                    </option>
+
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- CA -->
+
+            <div class="form-group">
+
+                <label>Number of Major Vessels (CA)</label>
+
+                <select name="ca" required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="0">
+                        0
+                    </option>
+
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                    <option value="3">
+                        3
+                    </option>
+
+                    <option value="4">
+                        4
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- THAL -->
+
+            <div class="form-group">
+
+                <label>Thalassemia (Thal)</label>
+
+                <select name="thal" required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="0">
+                        0
+                    </option>
+
+                    <option value="1">
+                        1
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                    <option value="3">
+                        3
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+
+                🔍 Predict Heart Disease
+
+            </button>
+
+
+        </form>
+
+
+        {% if prediction %}
+
+        <div class="result {{ result_class }}">
+
+            <h2>
+                {{ prediction }}
+            </h2>
+
+            {% if probability %}
+
+            <p>
+                Model Confidence:
+                <strong>{{ probability }}%</strong>
+            </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+
+        <p class="warning">
+
+            ⚠️ This application is for educational purposes only.
+            It is not a substitute for professional medical advice.
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
