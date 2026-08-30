@@ -97,13 +97,13 @@ def predict():
 
         if prediction == 1:
 
-            result = "⚠️ Possibility of Heart Disease"
+            result = " Possibility of Heart Disease"
 
             result_class = "danger"
 
         else:
 
-            result = "✅ No Heart Disease Detected"
+            result = "No Heart Disease Detected"
 
             result_class = "success"
 
